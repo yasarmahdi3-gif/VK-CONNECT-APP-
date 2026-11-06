@@ -394,4 +394,103 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-});
+});// ===== VK CONNECT: SUPABASE AUTHENTICATION =====
+
+const VK_SUPABASE_URL = "https://vuknoitixjlrolmprzwo.supabase.co";
+const VK_SUPABASE_KEY = "sb_publishable_5duqz0ik84vZw55EP8fp6A_i3Ak3-Wh";
+
+function loadSupabase() {
+  return new Promise((resolve, reject) => {
+    if (window.supabase) {
+      resolve(window.supabase);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+    script.onload = () => resolve(window.supabase);
+    script.onerror = reject;
+    document.head.appendChild(script);
+  });
+}
+
+let vkSupabase;
+
+async function connectVK() {
+  try {
+    const library = await loadSupabase();
+    vkSupabase = library.createClient(
+      VK_SUPABASE_URL,
+      VK_SUPABASE_KEY
+    );
+  } catch (error) {
+    alert("Connection failed. Please check your internet connection.");
+  }
+}
+
+connectVK();
+
+document.addEventListener("submit", async function(event) {
+  const form = event.target;
+
+  if (form.id !== "register-form" && form.id !== "login-form") {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopImmediatePropagation();
+
+  if (!vkSupabase) {
+    alert("Please wait. Connecting to VK CONNECT...");
+    return;
+  }
+
+  if (form.id === "register-form") {
+    const name = document.getElementById("register-name").value.trim();
+    const username = document.getElementById("register-username").value.trim();
+    const email = document.getElementById("register-email").value.trim();
+    const password = document.getElementById("register-password").value;
+
+    const { data, error } = await vkSupabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: name,
+          username: username
+        }
+      }
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    alert("Account created! Check your email for the verification link.");
+  }
+
+  if (form.id === "login-form") {
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    const { data, error } = await vkSupabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
+    if (error) {
+      alert(error.message);
+      return;
+    }
+
+    document.getElementById("login-screen").style.display = "none";
+    document.getElementById("welcome-screen").style.display = "none";
+    document.getElementById("register-screen").style.display = "none";
+    document.getElementById("app-screen").style.display = "block";
+
+    alert("Welcome to VK CONNECT!");
+  }
+}, true);
+
+// ===== END SUPABASE CONNECTION =====
