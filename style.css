@@ -1,0 +1,694 @@
+
+/* =================================
+   VK CONNECT - MAIN STYLESHEET
+================================= */
+
+:root {
+  --primary: #0866ff;
+  --primary-dark: #004ecc;
+  --background: #f4f7fc;
+  --surface: #ffffff;
+  --text: #172033;
+  --muted: #758096;
+  --border: #e5eaf2;
+  --danger: #e53935;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  transition: 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  background: var(--surface);
+  color: var(--text);
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(8, 102, 255, 0.1);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* =================================
+   LOADING SCREEN
+================================= */
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  gap: 12px;
+}
+
+.loading-logo,
+.app-logo,
+.small-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: var(--primary);
+  font-weight: 800;
+  border-radius: 22px;
+}
+
+.loading-logo {
+  width: 85px;
+  height: 85px;
+  font-size: 35px;
+}
+
+#loading-screen p {
+  opacity: 0.85;
+}
+
+.loader {
+  width: 35px;
+  height: 35px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-top: 15px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =================================
+   WELCOME SCREEN
+================================= */
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.welcome-content {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.app-logo {
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 25px;
+  font-size: 45px;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+}
+
+.welcome-content h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.welcome-content p {
+  color: var(--muted);
+  margin-bottom: 35px;
+}
+
+.welcome-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.welcome-buttons button,
+.auth-container form button {
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  background: var(--primary);
+  color: white;
+}
+
+.welcome-buttons button:last-child {
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.welcome-buttons button:hover,
+.auth-container form button:hover {
+  background: var(--primary-dark);
+  color: white;
+}
+
+/* =================================
+   LOGIN AND REGISTER
+================================= */
+
+.auth-container {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  padding: 30px 22px;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+}
+
+.auth-container h2 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.auth-container > p {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.auth-container form button {
+  margin-top: 5px;
+}
+
+.auth-container a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-container > a {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* =================================
+   MAIN APP HEADER
+================================= */
+
+#app-screen {
+  min-height: 100vh;
+  padding-bottom: 85px;
+}
+
+.app-header {
+  height: 68px;
+  padding: 0 18px;
+  background: var(--surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand h2 {
+  font-size: 19px;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.small-logo {
+  width: 38px;
+  height: 38px;
+  background: var(--primary);
+  color: white;
+  border-radius: 12px;
+  font-size: 17px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.header-actions button {
+  background: transparent;
+  font-size: 21px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.header-actions button:hover {
+  background: var(--background);
+}
+
+/* =================================
+   SEARCH AREA
+================================= */
+
+.search-area {
+  padding: 12px 16px;
+  background: var(--surface);
+}
+
+/* =================================
+   PAGES
+================================= */
+
+.pages-container {
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 18px 15px;
+}
+
+.page {
+  min-height: calc(100vh - 170px);
+  animation: fadeIn 0.25s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+.page.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.page-heading h2 {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.page-heading button {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--primary);
+  color: white;
+  font-size: 25px;
+}
+
+/* =================================
+   CHAT PAGE
+================================= */
+
+.chat-search {
+  margin-bottom: 18px;
+}
+
+.chat-search input {
+  background: var(--surface);
+}
+
+#chat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =================================
+   EMPTY STATES
+================================= */
+
+.empty-state {
+  background: var(--surface);
+  padding: 40px 20px;
+  border-radius: 18px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-top: 15px;
+}
+
+.empty-state span {
+  display: block;
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.empty-state h3 {
+  font-size: 17px;
+  margin-bottom: 9px;
+}
+
+.empty-state p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =================================
+   STATUS PAGE
+================================= */
+
+.my-status {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--surface);
+  padding: 16px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.status-avatar {
+  width: 52px;
+  height: 52px;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+}
+
+.my-status p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* =================================
+   CALLS PAGE
+================================= */
+
+.call-options {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.call-options button {
+  flex: 1;
+  padding: 15px 8px;
+  background: var(--surface);
+  color: var(--primary);
+  border-radius: 13px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+/* =================================
+   DISCOVER PAGE
+================================= */
+
+.discover-tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  margin-bottom: 18px;
+}
+
+.discover-tabs button {
+  background: var(--surface);
+  padding: 10px 17px;
+  border-radius: 20px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.discover-tabs button:first-child {
+  background: var(--primary);
+  color: white;
+}
+
+/* =================================
+   PROFILE PAGE
+================================= */
+
+.profile-cover {
+  height: 135px;
+  background: linear-gradient(120deg, #0866ff, #67b3ff);
+  border-radius: 18px;
+}
+
+.profile-information {
+  text-align: center;
+  margin-top: -45px;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 12px;
+  background: var(--surface);
+  border: 5px solid var(--surface);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 35px;
+  box-shadow: var(--shadow);
+}
+
+.profile-information h2 {
+  font-size: 20px;
+}
+
+.profile-information p {
+  color: var(--muted);
+  margin-top: 6px;
+  font-size: 14px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  background: var(--surface);
+  padding: 20px 10px;
+  border-radius: 15px;
+  margin: 22px 0;
+  box-shadow: var(--shadow);
+}
+
+.profile-stats div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.profile-stats strong {
+  font-size: 19px;
+}
+
+.profile-stats span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-menu button {
+  text-align: left;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+#logout-button {
+  color: var(--danger);
+}
+
+/* =================================
+   BOTTOM NAVIGATION
+================================= */
+
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.06);
+  z-index: 200;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.nav-item {
+  background: transparent;
+  color: var(--muted);
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nav-item span {
+  font-size: 21px;
+}
+
+.nav-item small {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.nav-item.active {
+  color: var(--primary);
+}
+
+/* =================================
+   NOTIFICATION
+================================= */
+
+.notification {
+  position: fixed;
+  bottom: 95px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #172033;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 12px;
+  z-index: 1000;
+  max-width: 90%;
+  font-size: 14px;
+  box-shadow: var(--shadow);
+}
+
+/* =================================
+   DARK MODE
+================================= */
+
+body.dark-mode {
+  --background: #101827;
+  --surface: #1b2638;
+  --text: #f1f5fb;
+  --muted: #a5b1c5;
+  --border: #344155;
+  --shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .app-header,
+body.dark-mode .bottom-navigation,
+body.dark-mode .auth-container {
+  background: var(--surface);
+}
+
+body.dark-mode input {
+  background: #243248;
+  color: white;
+}
+
+body.dark-mode .discover-tabs button {
+  background: #243248;
+  color: white;
+}
+
+body.dark-mode .discover-tabs button:first-child {
+  background: var(--primary);
+}
+
+/* =================================
+   TABLET AND DESKTOP
+================================= */
+
+@media (min-width: 768px) {
+  .pages-container {
+    padding: 28px;
+  }
+
+  .app-header {
+    padding: 0 35px;
+  }
+
+  .bottom-navigation {
+    max-width: 750px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 18px 18px 0 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand h2 {
+    font-size: 16px;
+  }
+
+  .nav-item small {
+    font-size: 9px;
+  }
+
+  .nav-item span {
+    font-size: 19px;
+  }
+
+  .call-options {
+    flex-direction: column;
+  }
+}
