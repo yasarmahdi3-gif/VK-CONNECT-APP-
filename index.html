@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#0866ff">
+  <meta name="description" content="VK CONNECT - Connect the World.">
+
+  <title>VK CONNECT - Connect the World</title>
+
+  <!-- App Icon -->
+  <link rel="icon" href="icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-logo">VK</div>
+    <h2>VK CONNECT</h2>
+    <p>Connect the World.</p>
+    <div class="loader"></div>
+  </div>
+
+  <!-- Welcome Screen -->
+  <section id="welcome-screen" class="screen">
+    <div class="welcome-content">
+      <div class="app-logo">VK</div>
+      <h1>VK CONNECT</h1>
+      <p>Connect the World.</p>
+
+      <div class="welcome-buttons">
+        <button id="show-login">Login</button>
+        <button id="show-register">Create Account</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Screen -->
+  <section id="login-screen" class="screen hidden">
+    <div class="auth-container">
+      <h2>Welcome Back!</h2>
+      <p>Login to your VK CONNECT account.</p>
+
+      <form id="login-form">
+        <input type="text" id="login-email" placeholder="Email or username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <p>Don't have an account?
+        <a href="#" id="go-register">Register</a>
+      </p>
+
+      <a href="#" id="back-welcome">Back</a>
+    </div>
+  </section>
+
+  <!-- Registration Screen -->
+  <section id="register-screen" class="screen hidden">
+    <div class="auth-container">
+      <h2>Create Your Account</h2>
+      <p>Join the VK CONNECT community.</p>
+
+      <form id="register-form">
+        <input type="text" id="register-name" placeholder="Full name" required>
+        <input type="text" id="register-username" placeholder="Username" required>
+        <input type="email" id="register-email" placeholder="Email address" required>
+        <input type="password" id="register-password" placeholder="Create password" required>
+
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p>Already have an account?
+        <a href="#" id="go-login">Login</a>
+      </p>
+
+      <a href="#" id="register-back">Back</a>
+    </div>
+  </section>
+
+  <!-- Main Application -->
+  <main id="app-screen" class="hidden">
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="small-logo">VK</div>
+        <h2>VK CONNECT</h2>
+      </div>
+
+      <div class="header-actions">
+        <button id="search-button" aria-label="Search">⌕</button>
+        <button id="theme-button" aria-label="Change theme">🌙</button>
+        <button id="header-profile" aria-label="Profile">👤</button>
+      </div>
+    </header>
+
+    <!-- Search -->
+    <div id="search-area" class="search-area hidden">
+      <input type="search" id="global-search" placeholder="Search VK CONNECT...">
+    </div>
+
+    <!-- Main Pages -->
+    <div class="pages-container">
+
+      <!-- Chats -->
+      <section id="chats-page" class="page active">
+        <div class="page-heading">
+          <h2>Chats</h2>
+          <button id="new-chat-button">＋</button>
+        </div>
+
+        <div class="chat-search">
+          <input type="search" placeholder="Search conversations...">
+        </div>
+
+        <div id="chat-list">
+          <div class="empty-state">
+            <span>💬</span>
+            <h3>Your chats will appear here</h3>
+            <p>Connect with friends and start chatting.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Status -->
+      <section id="status-page" class="page hidden">
+        <div class="page-heading">
+          <h2>Status</h2>
+          <button id="add-status-button">＋</button>
+        </div>
+
+        <div class="my-status">
+          <div class="status-avatar">👤</div>
+          <div>
+            <h3>My Status</h3>
+            <p>Share an update with friends.</p>
+          </div>
+        </div>
+
+        <div id="status-list"></div>
+      </section>
+
+      <!-- Calls -->
+      <section id="calls-page" class="page hidden">
+        <div class="page-heading">
+          <h2>Calls</h2>
+        </div>
+
+        <div class="call-options">
+          <button id="voice-call-button">📞 Voice Call</button>
+          <button id="video-call-button">📹 Video Call</button>
+        </div>
+
+        <div id="call-history">
+          <div class="empty-state">
+            <span>📞</span>
+            <h3>No calls yet</h3>
+            <p>Your recent calls will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Communities -->
+      <section id="communities-page" class="page hidden">
+        <div class="page-heading">
+          <h2>Communities</h2>
+          <button id="create-community-button">＋</button>
+        </div>
+
+        <div class="empty-state">
+          <span>👥</span>
+          <h3>Find your community</h3>
+          <p>Create or join groups and communities.</p>
+        </div>
+
+        <div id="community-list"></div>
+      </section>
+
+      <!-- Discover -->
+      <section id="discover-page" class="page hidden">
+        <div class="page-heading">
+          <h2>Discover</h2>
+          <button id="create-post-button">＋</button>
+        </div>
+
+        <div class="discover-tabs">
+          <button>For You</button>
+          <button>Trending</button>
+          <button>Following</button>
+        </div>
+
+        <div id="post-feed">
+          <div class="empty-state">
+            <span>🌍</span>
+            <h3>Discover the world</h3>
+            <p>Posts and videos from the community will appear here.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile -->
+      <section id="profile-page" class="page hidden">
+        <div class="page-heading">
+          <h2>My Profile</h2>
+          <button id="edit-profile-button">✏️</button>
+        </div>
+
+        <div class="profile-cover"></div>
+
+        <div class="profile-information">
+          <div class="profile-avatar">👤</div>
+          <h2 id="profile-name">VK CONNECT User</h2>
+          <p id="profile-username">@username</p>
+          <p id="profile-bio">Welcome to VK CONNECT!</p>
+        </div>
+
+        <div class="profile-stats">
+          <div><strong id="friends-count">0</strong><span>Friends</span></div>
+          <div><strong id="followers-count">0</strong><span>Followers</span></div>
+          <div><strong id="following-count">0</strong><span>Following</span></div>
+        </div>
+
+        <div class="profile-menu">
+          <button id="settings-button">⚙️ Settings</button>
+          <button id="privacy-button">🔒 Privacy</button>
+          <button id="language-button">🌐 Language</button>
+          <button id="backup-button">☁️ Backup</button>
+          <button id="logout-button">🚪 Logout</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-navigation">
+      <button class="nav-item active" data-page="chats-page">
+        <span>💬</span>
+        <small>Chats</small>
+      </button>
+
+      <button class="nav-item" data-page="status-page">
+        <span>⭕</span>
+        <small>Status</small>
+      </button>
+
+      <button class="nav-item" data-page="calls-page">
+        <span>📞</span>
+        <small>Calls</small>
+      </button>
+
+      <button class="nav-item" data-page="communities-page">
+        <span>👥</span>
+        <small>Groups</small>
+      </button>
+
+      <button class="nav-item" data-page="discover-page">
+        <span>🌍</span>
+        <small>Discover</small>
+      </button>
+
+      <button class="nav-item" data-page="profile-page">
+        <span>👤</span>
+        <small>Profile</small>
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- Notification / Message Popup -->
+  <div id="notification" class="notification hidden"></div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
